@@ -11,3 +11,7 @@ inject.sh can also be appedned to /var/diags/.bashrc from the DGX-OS Kernel. The
 # menu.sh
 This script will look for the field diagnostics for a DGX-2 (I have not been able to test it on a DGX-1, DGX-2H or the DGX-A100). 
 The script can easily be adapted for the Nvidia DGX SKUs.
+
+# flog_collect.sh
+This script will package all the previous Field Diagnostic Logs and upload the to your favorite FTP Server.
+It is really handy when the system crashes during testing and no logs were uploaded with the main.sh script.
