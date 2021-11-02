@@ -1,4 +1,4 @@
-# DGXDiagOS is a nive comprehensive suite of utilities for diagnostics on the Nvidia DGX Platforms.
+# DGXDiagOS is a nice comprehensive suite of utilities for diagnostics on the Nvidia DGX Platforms.
 # I have found that since I would have to oversee hundreds of these systems, I was performing a lot of diagnostics. 
 # In order to speed up the process, I spent the time to develop this menu system for Nvidia Field Diagnostics
 
