@@ -16,6 +16,8 @@ It pulls and compares the local copy and a pulled copy from a FTP server. If the
 This script will look for the field diagnostics for a DGX-2 (I have not been able to test it on a DGX-1, DGX-2H or the DGX-A100). 
 The script can easily be adapted for the Nvidia DGX SKUs.
 
+Updated to add parameters to the cli invocation. All menu items are currently supported.
+
 # flog_collect.sh
 This script will package all the previous Field Diagnostic Logs and upload the to your favorite FTP Server.
 It is really handy when the system crashes during testing and no logs were uploaded with the main.sh script.
