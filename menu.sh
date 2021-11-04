@@ -1,23 +1,9 @@
 #!/bin/bash
-## This script is desigen to help a Server Engineer Test, Diagnose and Gather Logs from the Nvidia DGX-2 DiagOS
+## This script is desiged to help a Server Engineer Test, Diagnose and Gather Logs from the Nvidia DGX-2 DiagOS
 ## The script will prompt the user for what testing they would like to perform. Runs the tests and upon completion will package then upload the test results to a FTP Server
 ## The log file can also be uploaded to another server with SCP or your favorite transport protocol
 
 ftp_server="4.4.4.4/logs/"
-
-echo "Checking pre-requisites, please wait..."
-sleep 3
-if [ -d "/var/diags/629-FLD03-2987-510/" ]; then
-	echo "Field Diags Already Prepped"
-	cd /var/diags/629-FLD03-2987-510/
-	echo " "
-	sleep 2
-elif [ ! -d "/var/diags/629-FLD03-2987-510/" ]; then
-	echo "Prepping Field Diags for usages, please wait.."
-	cd /var/diags/;sudo tar xfz 629-*.tgz;cd 629-FLD03-2987-510
-	echo " "
-	sleep 2
-fi
 
 gpumemFunc () {
 local SerNum=$(sudo dmidecode -s system-serial-number)
@@ -303,6 +289,52 @@ echo "+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 echo " "
 echo " "
 }
+
+echo "Checking pre-requisites, please wait..."
+sleep 3
+if [ -d "/var/diags/629-FLD03-2987-510/" ]; then
+	echo "Field Diags Already Prepped"
+	cd /var/diags/629-FLD03-2987-510/
+	echo " "
+	sleep 2
+elif [ ! -d "/var/diags/629-FLD03-2987-510/" ]; then
+	echo "Prepping Field Diags for usages, please wait.."
+	cd /var/diags/;sudo tar xfz 629-*.tgz;cd 629-FLD03-2987-510
+	echo " "
+	sleep 2
+fi
+
+if [[ $1 == 1 ]]; then
+	gpumemFunc;exit
+elif [[ $1 == 2 ]]; then
+	gpustressFunc;exit
+elif [[ $1 == 3 ]]; then
+	nvlinkFunc;exit
+elif [[ $1 == 4 ]]; then
+	nvswitchFunc;exit
+elif [[ $1 == 5 ]]; then
+	cudacoresFunc;exit
+elif [[ $1 == 6 ]]; then
+	gpuperFunc;exit
+elif [[ $1 == 7 ]]; then
+	gpuheatFunc;exit
+elif [[ $1 == 8 ]]; then
+	thermalFunc;exit
+elif [[ $1 == 9 ]]; then
+	videoFunc;exit
+elif [[ $1 == 10 ]]; then
+	powerFunc;exit
+elif [[ $1 == 11 ]]; then
+	pcieFunc;exit
+elif [[ $1 == 12 ]]; then
+	connFunc;exit
+elif [[ $1 == 13 ]]; then
+	quickFunc;exit
+elif [[ $1 == 14 ]]; then
+	fullFunc;exit
+elif [[ $1 == 15 ]]; then
+	fullFunc2;exit
+fi
 
 echo 'What test would you like to run today?'
 echo '======================================'
