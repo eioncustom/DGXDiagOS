@@ -4,11 +4,12 @@
 ## The log file can also be uploaded to another server with SCP or your favorite transport protocol
 
 ftp_server="4.4.4.4/logs/"
+SerNum=$(sudo dmidecode -s system-serial-number)
+dt=$(date '+%d.%m.%Y.%H.%M')
+host=$(hostname)
+
 
 gpumemFunc () {
-local SerNum=$(sudo dmidecode -s system-serial-number)
-local dt=$(date '+%d.%m.%Y.%H.%M')
-local host=$(hostname)
 echo "Starting GPU Memory Testing, please wait..."
 sudo ./fieldiag.sh --run_on_error --test gpumem
 sudo tar -zcf /tmp/$host.$SerNum.$dt.tar.xz /var/diags/629-FLD03-2987-510/fieldiag.log /var/diags/629-FLD03-2987-510/logs/* /var/diags/629-FLD03-2987-510/dgx/logs*
@@ -25,9 +26,6 @@ echo " "
 }
 
 gpuperFunc () {
-local SerNum=$(sudo dmidecode -s system-serial-number)
-local dt=$(date '+%d.%m.%Y.%H.%M')
-local host=$(hostname)
 echo "Starting GPU Performance Switch Testing, please wait..."
 sudo ./fieldiag.sh --run_on_error --test gpuperfswitch
 sudo tar -zcf /tmp/$host.$SerNum.$dt.tar.xz /var/diags/629-FLD03-2987-510/fieldiag.log /var/diags/629-FLD03-2987-510/logs/* /var/diags/629-FLD03-2987-510/dgx/logs*
@@ -44,9 +42,6 @@ echo " "
 }
 
 cudacoresFunc () {
-local SerNum=$(sudo dmidecode -s system-serial-number)
-local dt=$(date '+%d.%m.%Y.%H.%M')
-local host=$(hostname)
 echo "Starting Cuda Core Testing, please wait..."
 sudo ./fieldiag.sh --run_on_error --test cudacores
 sudo tar -zcf /tmp/$host.$SerNum.$dt.tar.xz /var/diags/629-FLD03-2987-510/fieldiag.log /var/diags/629-FLD03-2987-510/logs/* /var/diags/629-FLD03-2987-510/dgx/logs*
@@ -63,9 +58,6 @@ echo " "
 }
 
 nvlinkFunc () {
-local SerNum=$(sudo dmidecode -s system-serial-number)
-local dt=$(date '+%d.%m.%Y.%H.%M')
-local host=$(hostname)
 echo "Starting NVLink Testing, please wait..."
 sudo ./fieldiag.sh --run_on_error --test nvlink
 sudo tar -zcf /tmp/$host.$SerNum.$dt.tar.xz /var/diags/629-FLD03-2987-510/fieldiag.log /var/diags/629-FLD03-2987-510/logs/* /var/diags/629-FLD03-2987-510/dgx/logs*
@@ -82,9 +74,6 @@ echo " "
 }
 
 nvswitchFunc () {
-local SerNum=$(sudo dmidecode -s system-serial-number)
-local dt=$(date '+%d.%m.%Y.%H.%M')
-local host=$(hostname)
 echo "Starting NV Switch Testing, please wait..."
 sudo ./fieldiag.sh --run_on_error --test nvswitch
 sudo tar -zcf /tmp/$host.$SerNum.$dt.tar.xz /var/diags/629-FLD03-2987-510/fieldiag.log /var/diags/629-FLD03-2987-510/logs/* /var/diags/629-FLD03-2987-510/dgx/logs*
@@ -101,9 +90,6 @@ echo " "
 }
 
 gpustressFunc () {
-SerNum=$(sudo dmidecode -s system-serial-number)
-dt=$(date '+%d.%m.%Y.%H.%M')
-host=$(hostname)
 echo "Starting GPU Stress Testing, please wait..."
 sudo ./fieldiag.sh --run_on_error --test gpustress
 sudo tar -zcf /tmp/$host.$SerNum.$dt.tar.xz /var/diags/629-FLD03-2987-510/fieldiag.log /var/diags/629-FLD03-2987-510/logs/* /var/diags/629-FLD03-2987-510/dgx/logs*
@@ -120,9 +106,6 @@ echo " "
 }
 
 pcieFunc () {
-SerNum=$(sudo dmidecode -s system-serial-number)
-dt=$(date '+%d.%m.%Y.%H.%M')
-host=$(hostname)
 echo "Starting PCIe Testing, please wait..."
 sudo ./fieldiag.sh --run_on_error --test pcie
 sudo tar -zcf /tmp/$host.$SerNum.$dt.tar.xz /var/diags/629-FLD03-2987-510/fieldiag.log /var/diags/629-FLD03-2987-510/logs/* /var/diags/629-FLD03-2987-510/dgx/logs*
@@ -139,9 +122,6 @@ echo " "
 }
 
 powerFunc () {
-SerNum=$(sudo dmidecode -s system-serial-number)
-dt=$(date '+%d.%m.%Y.%H.%M')
-host=$(hostname)
 echo "Starting Power Testing, please wait..."
 sudo ./fieldiag.sh --run_on_error --test power
 sudo tar -zcf /tmp/$host.$SerNum.$dt.tar.xz /var/diags/629-FLD03-2987-510/fieldiag.log /var/diags/629-FLD03-2987-510/logs/* /var/diags/629-FLD03-2987-510/dgx/logs*
@@ -158,9 +138,6 @@ echo " "
 }
 
 gpuheatFunc () {
-SerNum=$(sudo dmidecode -s system-serial-number)
-dt=$(date '+%d.%m.%Y.%H.%M')
-host=$(hostname)
 echo "Starting GPU Heat Sink Testing, please wait..."
 sudo ./fieldiag.sh --run_on_error --test gpuheatsink
 sudo tar -zcf /tmp/$host.$SerNum.$dt.tar.xz /var/diags/629-FLD03-2987-510/fieldiag.log /var/diags/629-FLD03-2987-510/logs/* /var/diags/629-FLD03-2987-510/dgx/logs*
@@ -177,9 +154,6 @@ echo " "
 }
 
 videoFunc () {
-SerNum=$(sudo dmidecode -s system-serial-number)
-dt=$(date '+%d.%m.%Y.%H.%M')
-host=$(hostname)
 echo "Starting Video Testing, please wait..."
 sudo ./fieldiag.sh --run_on_error --test video
 sudo tar -zcf /tmp/$host.$SerNum.$dt.tar.xz /var/diags/629-FLD03-2987-510/fieldiag.log /var/diags/629-FLD03-2987-510/logs/* /var/diags/629-FLD03-2987-510/dgx/logs*
@@ -196,9 +170,6 @@ echo " "
 }
 
 connFunc () {
-SerNum=$(sudo dmidecode -s system-serial-number)
-dt=$(date '+%d.%m.%Y.%H.%M')
-host=$(hostname)
 echo "Starting the Connectivity Test, please wait..."
 sudo ./fieldiag.sh --run_on_error --test connectivity
 sudo tar -zcf /tmp/$host.$SerNum.$dt.tar.xz /var/diags/629-FLD03-2987-510/fieldiag.log /var/diags/629-FLD03-2987-510/logs/* /var/diags/629-FLD03-2987-510/dgx/logs*
@@ -215,9 +186,6 @@ echo " "
 }
 
 quickFunc () {
-SerNum=$(sudo dmidecode -s system-serial-number)
-dt=$(date '+%d.%m.%Y.%H.%M')
-host=$(hostname)
 echo "Starting the Quick Check Suite Tests, please wait..."
 sudo ./fieldiag.sh --run_on_error --test quickcheck
 sudo tar -zcf /tmp/$host.$SerNum.$dt.tar.xz /var/diags/629-FLD03-2987-510/fieldiag.log /var/diags/629-FLD03-2987-510/logs/* /var/diags/629-FLD03-2987-510/dgx/logs*
@@ -234,9 +202,6 @@ echo " "
 }
 
 fullFunc () {
-SerNum=$(sudo dmidecode -s system-serial-number)
-dt=$(date '+%d.%m.%Y.%H.%M')
-host=$(hostname)
 echo "Starting the Level 1 Suite Tests, please wait..."
 sudo ./fieldiag.sh --run_on_error --level1
 sudo tar -zcf /tmp/$host.$SerNum.$dt.tar.xz /var/diags/629-FLD03-2987-510/fieldiag.log /var/diags/629-FLD03-2987-510/logs/* /var/diags/629-FLD03-2987-510/dgx/logs*
@@ -253,9 +218,6 @@ echo " "
 }
 
 fullFunc2 () {
-SerNum=$(sudo dmidecode -s system-serial-number)
-dt=$(date '+%d.%m.%Y.%H.%M')
-host=$(hostname)
 echo "Starting the Level 2 Suite Tests, please wait..."
 sudo ./fieldiag.sh --run_on_error --level2
 sudo tar -zcf /tmp/$host.$SerNum.$dt.tar.xz /var/diags/629-FLD03-2987-510/fieldiag.log /var/diags/629-FLD03-2987-510/logs/* /var/diags/629-FLD03-2987-510/dgx/logs*
@@ -272,9 +234,6 @@ echo " "
 }
 
 thermalFunc() {
-SerNum=$(sudo dmidecode -s system-serial-number)
-dt=$(date '+%d.%m.%Y.%H.%M')
-host=$(hostname)
 echo "Starting the Thermal Testing, please wait..."
 sudo ./fieldiag.sh --run_on_error --test thermal
 sudo tar -zcf /tmp/$host.$SerNum.$dt.tar.xz /var/diags/629-FLD03-2987-510/fieldiag.log /var/diags/629-FLD03-2987-510/logs/* /var/diags/629-FLD03-2987-510/dgx/logs*
@@ -299,7 +258,7 @@ if [ -d "/var/diags/629-FLD03-2987-510/" ]; then
 	sleep 2
 elif [ ! -d "/var/diags/629-FLD03-2987-510/" ]; then
 	echo "Prepping Field Diags for usages, please wait.."
-	cd /var/diags/;sudo tar xfz 629-*.tgz;cd 629-FLD03-2987-510
+	cd /var/diags/;sudo tar xfz 629-FLD03-2987-510.tgz;cd 629-FLD03-2987-510
 	echo " "
 	sleep 2
 fi
@@ -353,6 +312,8 @@ echo ' 12. Connectivity Test (~10m)'
 echo ' 13. Quick Check Suite (~40m)'
 echo ' 14. Complete Suite Lvl 1 (~2h 35m)'
 echo ' 15. Complete Suite Lvl 2 (~4h 50m)'
+echo ' '
+echo ' Any option not listed will exit script.'
 read -p '=> ' runFunc
 
 # Anything other than a defined options will exit the script.
